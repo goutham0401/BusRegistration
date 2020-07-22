@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Table</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 15px 21px;
+            text-align: center;
+            background-color: rgba(63, 241, 31, 0.787);
+        }
+
+        thead {
+            background: rgb(251, 215, 9);
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <th>S.no</th>
+            <th>Busname</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Pickup</th>
+            <th>Dispatch</th>
+            <th>Price</th>
+        </thead>
+
+        <tbody>
+            <% for(let i=0;i<data.length;i++) {%>
+            <tr>
+                <td><%=i %></td>
+                <td><%=data[i].busname %></td>
+                <td><%=data[i].from %></td>
+                <td><%=data[i].to %></td>
+                <td><%=data[i].pickup %></td>
+                <td><%=data[i].dispatch %></td>
+                <td><%=data[i].price %></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+
+</html>

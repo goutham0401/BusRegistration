@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>validation</title>
+    <style>
+        form {
+            background-color: #84848a;
+            padding: 9px 17px;
+            width: 19%;
+        }
+
+        input {
+            float: right;
+        }
+
+        label {
+            float: left;
+
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #button {
+            float: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="/validateuser">
+        <p id="message"></p>
+        ------------------------------------------------<br><br>
+        <label>UserName:</label><input id="username" type="text" name="username" onchange="validate()"><br><br>
+        <label>Email:</label><input type="text" name="email"><br><br>
+        <label>Password:</label><input type="password" name="Password"><br><br>
+        <input type="submit">
+    </form>
+    <br>
+
+    <script>
+        function validate() {
+            var val = document.getElementById("username").value;
+            if (val.length < 8) {
+                console.log("requesting the server....");
+                validation(val);
+            }
+        }
+        function validation(username) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                console.log("server status change....");
+                console.log(xhttp.readyState);
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    console.log("response received successfully....");
+                    var res = xhttp.responseText;
+                    console.log("this is",res);
+                    var parse = JSON.parse(res);
+                    var status = parse.status;
+                    console.log("user status", status)
+                    if (status==true) {
+                        document.getElementById("message").innerHTML = "username already taken"
+                    }
+                    else {
+                        document.getElementById("message").innerHTML = "continue......"
+                    }
+                }
+            }
+            xhttp.open("GET", "http://localhost:7070/validateuser?username=" + username, true);
+            xhttp.send();
+            console.log("request send to server.....");
+        }
+    </script>
+</body>
+<!--
+0: request not initialized
+1: server connection established
+2: request received
+3: processing request
+4: request finished and response is ready -->
+</html>

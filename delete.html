@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BUS</title>
+    <style>
+       form{
+        background-color: #84848a;
+        padding: 0 17px;
+        width: 19%;
+       } 
+       input
+       {
+           float: right;
+       }
+       label
+       {
+           float:left;
+           
+       }
+       h1
+       {
+        text-align: center;
+       }
+       #button
+            {
+                float: none;
+            }
+    </style>
+</head>
+<body>
+        
+    <form action="/deleteuser">
+        <h1>DELETE</h1>
+        ------------------------------------------------<br><br>
+        <label>Busname:</label><input type="text" name="busname"><br><br>
+        <label>From:</label><input type="text" name="from"><br><br>
+        <label>To:</label><input type="text" name="to"><br><br>
+        <input id="button" type="submit">
+       
+    </form>
+    <br>
+    <a href="home"><button>Insert</button></a>
+    <a href="update"><button>Update</button></a>
+</body>
+</html> 
